@@ -28,7 +28,9 @@ const components = {
 };
 const isServer = typeof window === "undefined";
 
-const accessToken = "x7m5XQrjZNZQsboSlYEnjgtt";
+const accessToken = isServer
+? process.env.STORYBLOK_TOKEN
+: window.env.STORYBLOK_TOKEN;
 
 storyblokInit({
   accessToken,

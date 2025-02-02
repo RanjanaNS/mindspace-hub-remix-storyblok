@@ -14,8 +14,8 @@
   "dependencies": {
     "@netlify/functions": "^2.6.3",
     "@netlify/remix-adapter": "^2.6.0",
-    "@remix-run/react": "^2.9.1",
-    "@remix-run/vercel": "^1.19.3",
+    "@remix-run/node": "^2.15.3",
+    "@remix-run/react": "^2.15.3",
     "@storyblok/react": "^3.0.10",
     "@tailwindcss/typography": "^0.5.12",
     "cross-env": "^7.0.3",
@@ -24,7 +24,7 @@
     "utils": "^0.3.1"
   },
   "devDependencies": {
-    "@remix-run/dev": "^2.9.1",
+    "@remix-run/dev": "^2.15.3",
     "@remix-run/eslint-config": "^2.9.1",
     "@remix-run/serve": "^2.9.1",
     "@types/estree": "^1.0.6",
