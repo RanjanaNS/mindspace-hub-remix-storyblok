@@ -4,8 +4,8 @@
   "sideEffects": false,
   "type": "module",
   "scripts": {
-    "build": "remix build",
-    "dev": "remix dev",
+    "build": "npm run redirects:enable && remix build",
+    "dev": "npm run redirects:disable && remix dev",
     "start": "netlify serve",
     "typecheck": "tsc -b",
     "redirects:enable": "shx cp .redirects public/_redirects",
@@ -15,6 +15,7 @@
     "@netlify/functions": "^2.6.3",
     "@netlify/remix-adapter": "^2.6.0",
     "@remix-run/react": "^2.9.1",
+    "@remix-run/vercel": "^1.19.3",
     "@storyblok/react": "^3.0.10",
     "@tailwindcss/typography": "^0.5.12",
     "cross-env": "^7.0.3",

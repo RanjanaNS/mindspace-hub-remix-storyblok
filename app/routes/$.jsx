@@ -47,7 +47,7 @@ export const loader = async ({ params, request }) => {
   slug = slug === "/" || slug === language ? "home" : slug;
 
   slug = blogSlug ? blogSlug : slug;
-  let version = "draft";
+  let version = isPreview() ? "draft" : "published";
 
   let sbParams = {
     version,
