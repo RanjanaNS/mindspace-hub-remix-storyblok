@@ -1,4 +1,3 @@
-import { json } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
 import { languages } from "~/utils/langs";
 import { isPreview } from "~/utils/isPreview";
@@ -76,5 +75,11 @@ export const loader = async ({ params, request }) => {
     },
     { cache: "no-store" }
   );
-  return json({ story: data?.story, articles: articles?.stories });
+  return new Response(
+    JSON.stringify({ story: data?.story, articles: articles?.stories }),
+    {
+      status: 200,
+      headers: { "Content-Type": "application/json" },
+    }
+  );
 };
