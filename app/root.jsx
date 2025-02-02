@@ -1,0 +1,78 @@
+import {
+  Links,
+  LiveReload,
+  Meta,
+  Outlet,
+  Scripts,
+  ScrollRestoration,
+  useLoaderData,
+} from "@remix-run/react";
+import stylesheet from "~/tailwind.css";
+import { json } from "@remix-run/node";
+
+import { storyblokInit, apiPlugin } from "@storyblok/react";
+import Page from "./components/Page";
+import Layout from "./components/Layout";
+import Hero from "./components/Hero";
+import Article from "./components/Article";
+import AllArticles from "./components/AllArticles";
+import PopularArticles from "./components/PopularArticles";
+import { isPreview } from "~/utils/isPreview";
+
+const components = {
+  page: Page,
+  hero: Hero,
+  article: Article,
+  "all-articles": AllArticles,
+  "popular-articles": PopularArticles,
+};
+const isServer = typeof window === "undefined";
+
+const accessToken = "x7m5XQrjZNZQsboSlYEnjgtt";
+
+storyblokInit({
+  accessToken,
+  use: [apiPlugin],
+  components,
+  bridge: isPreview(),
+});
+
+export const loader = async ({ params }) => {
+  let lang = params.lang || "default";
+
+  return json({
+    lang,
+    env: {
+      STORYBLOK_TOKEN: process.env.STORYBLOK_TOKEN,
+      STORYBLOK_IS_PREVIEW: process.env.STORYBLOK_IS_PREVIEW,
+    },
+  });
+};
+export const links = () => [{ rel: "stylesheet", href: stylesheet }];
+
+export default function App() {
+  const { lang, env } = useLoaderData();
+  return (
+    <html lang={lang}>
+      <head>
+        <meta charSet="utf-8" />
+        <meta name="viewport" content="width=device-width,initial-scale=1" />
+        <Meta />
+        <Links />
+      </head>
+      <body>
+        <Layout>
+          <Outlet />
+          <ScrollRestoration />
+          <Scripts />
+          <LiveReload />
+        </Layout>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `window.env = ${JSON.stringify(env)}`,
+          }}
+        />
+      </body>
+    </html>
+  );
+}
