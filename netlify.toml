@@ -1,9 +1,9 @@
 [build]
-command = "npm run dev"
+command = "npm run build"
 publish = "public"
 
 [dev]
-command = "npm run dev"
+command = "npm run start"
 targetPort = 3000
 
 # Set immutable caching for static files, because they have fingerprinted filenames
