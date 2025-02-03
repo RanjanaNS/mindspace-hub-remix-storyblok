@@ -8,7 +8,7 @@ const Hero = ({ blok }) => {
     relative
     flex
     items-end
-    justify-center
+    justify-left
     p-9
     my-6
     rounded-[5px]
@@ -16,9 +16,9 @@ const Hero = ({ blok }) => {
       blok.layout === "constrained" ? "container mx-auto" : ""
     }`}
     >
-      <div className="relative z-10 text-center">
-        <h1 className="text-6xl text-white font-bold mb-3">{blok.headline}</h1>
-        <h2 className="text-4xl text-white font-light">{blok.subheadline}</h2>
+      <div className="relative z-10 text-left">
+        <h1 className="text-5xl text-white font-bold mb-3">{blok.headline}</h1>
+        <h2 className="text-3xl text-white">{blok.subheadline}</h2>
       </div>
       <img
         src={blok.image.filename}

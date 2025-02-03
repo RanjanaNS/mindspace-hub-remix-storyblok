@@ -11,103 +11,22 @@ const Navigation = () => {
     <div className="relative bg-white border-b-2 border-gray-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <div className="flex justify-between items-center  py-6 md:justify-start md:space-x-10">
-          <div className="flex justify-start lg:w-0 lg:flex-1">
+          <div className="flex justify-start lg:w-0 lg:flex-1 pt-12 pb-4">
             <Link prefetch="intent" to={getTransLink("/", currentLanguage)}>
               <span className="sr-only">Storyblok</span>
               <img
-                className="h-20 w-auto sm:h-10 hidden sm:block"
-                src="https://a.storyblok.com/f/88751/251x53/0d3909fe96/storyblok-primary.png"
-                alt="Storyblok"
+                className="h-80 w-auto sm:h-32 absolute top-0 left-20 mb-16"
+                src="https://t3.ftcdn.net/jpg/03/35/16/66/360_F_335166628_b2M3WgWbbZqxNHsRt6ZxHzk1dtCrWhVx.jpg"
+                alt="Mindspace Journal"
               />
               <img
-                className="h-20 w-auto sm:h-10 sm:hidden"
-                src="https://a.storyblok.com/f/88751/92x106/835caf912a/storyblok-logo.png"
-                alt="Storyblok"
+                className="h-80 w-auto sm:h-32 absolute top-0 left-20 mb-16 sm:hidden"
+                src="https://t3.ftcdn.net/jpg/03/35/16/66/360_F_335166628_b2M3WgWbbZqxNHsRt6ZxHzk1dtCrWhVx.jpg"
+                alt="Mindspace Journal"
               />
+              <span class="text-orange-500 text-4xl font-bold absolute top-12 left-44 tracking-wide">Mindspace Journal</span>
             </Link>
           </div>
-          <div className="-mr-2 -my-2 md:hidden">
-            <button
-              type="button"
-              onClick={() => setOpenMenu(true)}
-              className="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500"
-              aria-expanded="false"
-            >
-              <span className="sr-only">Open menu</span>
-              {/* <!-- Heroicon name: outline/menu --> */}
-              <svg
-                className="h-6 w-6"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                aria-hidden="true"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M4 6h16M4 12h16M4 18h16"
-                />
-              </svg>
-            </button>
-          </div>
-          <div className="hidden md:flex items-center justify-end md:flex-1 lg:w-0 space-x-10">
-            <NavLink
-              prefetch="intent"
-              to={getTransLink("/about", currentLanguage)}
-              className="text-base font-medium text-gray-500 hover:text-gray-900"
-            >
-              About
-            </NavLink>
-            <NavLink
-              prefetch="intent"
-              to={getTransLink("/blog", currentLanguage)}
-              className="text-base font-medium text-gray-500 hover:text-gray-900"
-            >
-              Blog
-            </NavLink>
-            <NavLink
-              prefetch="intent"
-              to={getTransLink("/services", currentLanguage)}
-              className="text-base font-medium text-gray-500 hover:text-gray-900"
-            >
-              Services
-            </NavLink>
-          </div>
-          {languages.map((lang) => {
-            if (lang === currentLanguage) return null; // Don't create a switcher for the current language
-
-            let switchLanguagePath;
-
-            if (currentPath === "/" || currentPath === `/${currentLanguage}`) {
-              switchLanguagePath = lang === "en" ? "/" : `/${lang}`; // Special case for the home page
-            } else if (currentPath.startsWith(`/${currentLanguage}`)) {
-              switchLanguagePath =
-                lang === "en"
-                  ? currentPath.replace(`/${currentLanguage}`, "") // Remove current language prefix for English
-                  : currentPath.replace(`/${currentLanguage}`, `/${lang}`); // Replace current language prefix with new language
-            } else {
-              switchLanguagePath = `/${lang}${currentPath}`; // Add new language prefix to the current path
-            }
-
-            let flagEmoji;
-            if (lang === "en") {
-              flagEmoji = "🇺🇸";
-            } else if (lang === "es") {
-              flagEmoji = "🇪🇸";
-            }
-
-            return (
-              <Link
-                key={lang}
-                to={switchLanguagePath}
-                className="font-bold text-3xl"
-              >
-                {flagEmoji}
-              </Link>
-            );
-          })}
         </div>
       </div>
 
@@ -122,64 +41,10 @@ const Navigation = () => {
                 <div>
                   <img
                     className="h-8 w-auto"
-                    src="https://a.storyblok.com/f/88751/92x106/835caf912a/storyblok-logo.png"
-                    alt="Storyblok"
+                    src="https://t3.ftcdn.net/jpg/03/35/16/66/360_F_335166628_b2M3WgWbbZqxNHsRt6ZxHzk1dtCrWhVx.jpg"
+                    alt="Mindspace Journal"
                   />
                 </div>
-                <div className="-mr-2">
-                  <button
-                    type="button"
-                    onClick={() => setOpenMenu(false)}
-                    className="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500"
-                  >
-                    <span className="sr-only">Close menu</span>
-                    {/* <!-- Heroicon name: outline/x --> */}
-                    <svg
-                      className="h-6 w-6"
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                      aria-hidden="true"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth="2"
-                        d="M6 18L18 6M6 6l12 12"
-                      />
-                    </svg>
-                  </button>
-                </div>
-              </div>
-              <div className="mt-6">
-                <nav className="grid gap-y-8">
-                  <Link
-                    to="/about"
-                    className="-m-3 p-3 flex items-center rounded-md hover:bg-gray-50"
-                  >
-                    <span className="ml-3 text-base font-medium text-gray-900">
-                      About
-                    </span>
-                  </Link>
-                  <Link
-                    to="/blog"
-                    className="-m-3 p-3 flex items-center rounded-md hover:bg-gray-50"
-                  >
-                    {/* <!-- Heroicon name: outline/cursor-click --> */}
-                    <span className="ml-3 text-base font-medium text-gray-900">
-                      Blog
-                    </span>
-                  </Link>
-                  <Link
-                    to="/services"
-                    className="-m-3 p-3 flex items-center rounded-md hover:bg-gray-50"
-                  >
-                    <span className="ml-3 text-base font-medium text-gray-900">
-                      Services
-                    </span>
-                  </Link>
-                </nav>
               </div>
             </div>
           </div>
