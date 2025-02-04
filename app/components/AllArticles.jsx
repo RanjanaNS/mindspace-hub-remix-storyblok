@@ -7,7 +7,7 @@ const AllArticles = ({ blok }) => {
  
   return (
     <>
-      <p className="text-3xl">{blok.title}</p>
+      <p className="text-5xl font-semibold pt-12">{blok.headline}</p>
       <div
         className="grid w-full grid-cols-1 gap-6 mx-auto lg:grid-cols-4   lg:px-24 md:px-16"
         {...storyblokEditable(blok)}
