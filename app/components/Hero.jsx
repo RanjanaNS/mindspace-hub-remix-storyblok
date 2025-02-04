@@ -17,8 +17,8 @@ const Hero = ({ blok }) => {
     }`}
     >
       <div className="relative z-10 text-left">
-        <h1 className="text-5xl text-white font-bold mb-3">{blok.headline}</h1>
-        <h2 className="text-3xl text-white">{blok.subheadline}</h2>
+        <h1 className="text-4xl text-white font-bold mb-3">{blok.headline}</h1>
+        <h2 className="text-2xl text-white">{blok.subheadline}</h2>
       </div>
       <img
         src={blok.image.filename}
